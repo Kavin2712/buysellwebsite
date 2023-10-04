@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e8d8d8;
+        }
+        header {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 960px;
+            margin: 50px auto;
+            padding: 100px;
+            background-color: #e1d5d5;
+            box-shadow: 0px 0px 10px rgba(222, 204, 204, 0.1);
+        }
+        .big-button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 24px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <p>BYZEE!!</p>
+        <img src="logo.jpg" alt="height=10px">
+        <button id="logout-button">Logout</button>
+    </header>
+
+    <div class="container">
+        <h2>What is the Purpose :</h2><br><br>
+        <a href="buy.html" id="buy-button" class="big-button" disabled>BUY</a>
+        <a href="sell.html" id="sell-button" class="big-button" disabled>SELL</a>
+    </div>
+</body>
+<script>
+
+    document.getElementById("logout-button").addEventListener("click", logout);
+
+    function logout() {
+        // Add the URL of the page you want to redirect to after logout
+        var redirectURL = "login.html"; // Replace with the actual URL
+
+        // Perform any additional logout actions if needed
+
+        // Redirect to the specified URL
+        window.location.href = redirectURL;
+    }
+</script>
+</html>

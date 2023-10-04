@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Your Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: local ;
+            background-color: rgb(98, 167, 13);
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        select, input, textarea {
+            margin: 10px 0;
+            width: 50%;
+            padding: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sell Your Product</h1>
+    <form id="product-form">
+        <center>
+        <label for="category">Select a Category:</label>
+        <select name="category" id="category">
+            <option value="vehicle">Vehicle</option>
+            <option value="electronics">Electronics</option>
+            <option value="homeproduct">Home Product</option>
+        </select>
+        <br>
+     
+        <label for="type">Type:</label>
+        <select name="type" id="type">
+            <!-- For Vehicle Category -->
+            <option value="two-wheeler" class="vehicle">Two-Wheeler</option>
+            <option value="four-wheeler" class="vehicle">Four-Wheeler</option>
+            
+            <!-- For Electronics Category -->
+            <option value="laptop" class="electronics">Laptop</option>
+            <option value="mobile" class="electronics">Mobile</option>
+
+            <!-- For Home Product Category -->
+            <option value="furniture" class="homeproduct">Furniture</option>
+            <option value="appliance" class="homeproduct">Appliance</option>
+        </select>
+        <br>
+
+        <label for="image">Upload Image:</label>
+        <input type="file" name="image" id="image">
+        <br>
+
+        <label for="brand">Brand:</label>
+        <input type="text" name="brand" id="brand">
+        <br>
+
+        <label for="address">contact:</label>
+        <input type="text" name="address" id="address">
+        <br>
+
+        <label for="price">Price:</label>
+        <input type="text" name="price" id="price">
+        <br>
+
+        <input type="submit" value="Post">
+    </center>
+    </form>
+    <script>
+        const form = document.getElementById('product-form');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Get the form data
+            const category = document.getElementById('category').value;
+            const type = document.getElementById('type').value;
+            const image = document.getElementById('image').value;
+            const brand = document.getElementById('brand').value;
+            const address = document.getElementById('address').value;
+            const price = document.getElementById('price').value;
+
+            // Create an object to represent the product
+            const product = {
+                category,
+                type,
+                image,
+                brand,
+                address,
+                price,
+            };
+
+            // Convert the product object to JSON
+            const productJSON = JSON.stringify(product);
+
+            // Store the product data in sessionStorage (temporary storage for this example)
+            sessionStorage.setItem('postedProduct', productJSON);
+
+            // Alert the user that the product is posted
+            alert('Your product is posted.');
+
+            // Redirect to the home page
+            // window.location.href = '5.html';
+         const x = sessionStorage.getItem('postedProduct');
+         console.log(x)
+        if (x) {
+            const productObject = JSON.parse(x);
+
+            // Create a list element to display the product details
+            const list = document.getElementById("item");
+            // Example image path
+const imagePath = productObject.image
+
+// Split the image path
+const pathParts = imagePath.split('\\'); // Split by slash (/)
+
+// Get the filename (last part of the path)
+const filename = pathParts.pop();
+            const li = document.createElement("li");
+            li.innerHTML = `
+                <h3>Category: ${productObject.category}</h3>
+                <p>Type: ${productObject.type}</p>
+                <img src='${filename}'>
+                <p>Brand: ${productObject.brand}</p>
+                <p>Address: ${productObject.address}</p>
+                <p>Price: ${productObject.price}</p>
+            `;
+            list.appendChild(li);
+        }
+            
+
+        });
+    </script>
+<ul id="item"></ul>
+</body>
+</html>
